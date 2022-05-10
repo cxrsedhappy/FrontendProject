@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', path='/style.css')}}">
+    <title>Watatsumi</title>
+</head>
+<body>
+
+<nav class="navbar">
+    <a class="toggle-button" onclick="OpenMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+
+    <div class="logo">
+        <a href="/">Your Profile</a>
+    </div>
+
+    <div class="dropdown">
+        {% if authorized == True %}
+        <div class="dropbtn">{{nickname}}</div>
+        <div class="dropdown-content">
+            <a href="/me">My Profile</a>
+            <a href="/logout">Sing out</a>
+            {% else %}
+            <div class="dropbtn">Guest</div>
+            <div class="dropdown-content">
+                <a href="/login">Sing in</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div><a href="/create">Create post</a></div>
+    {% for post in posts%}
+    <div class="post">
+        <div class="post-wrapper">
+            <div class="post-header">
+                <div class="post-title"><a>{{post.title}}</a></div>
+                <div class="post-author"><a>By: {{post.author.nickname}}</a></div>
+            </div>
+            <div class="post-content-wrapper">
+                <div class="post-content">
+                    <a>{{post.content}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</main>
+
+
+<footer class="footer">
+    <div class="footer-wrapper">
+        <div class="footer-contacts">
+            <ul>
+                <li><a>Terms Of Service</a></li>
+                <li><a>Support</a></li>
+            </ul>
+        </div>
+        <nav class="social-media">
+            <div>
+                <ul>
+                    <li><a class="vk">vk</a></li>
+                    <li><a class="instagram">instagram</a></li>
+                    <li><a class="youtube">youtube</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>

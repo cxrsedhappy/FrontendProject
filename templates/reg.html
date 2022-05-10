@@ -1,0 +1,58 @@
+{% extends "base.html "%}
+
+{% block navbar %}
+
+<nav class="navbar">
+    <a class="toggle-button" onclick="OpenMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+
+    <div class="logo">
+        <a href="/">Registration</a>
+    </div>
+
+    <div class="dropdown">
+        {% if authorized == True %}
+        <div class="dropbtn">{{nickname}}</div>
+        <div class="dropdown-content">
+            <a href="/me">My Profile</a>
+            <a href="/logout">Sing out</a>
+            {% else %}
+            <div class="dropbtn">Guest</div>
+            <div class="dropdown-content">
+                <a href="/login">Sing in</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="reg">
+        <div class="empty">
+            <a>Регистрация</a>
+        </div>
+        <form id="singin" action="http://127.0.0.1:8001/r" method="post">
+            <div class="form">
+                <input id="username" class="name" name="username" type="text" required="">
+                <label>Username</label>
+            </div>
+            <div class="form">
+                <input id="email" class="name" name="email" type="text" required="">
+                <label>Email</label>
+            </div>
+            <div class="form">
+                <input id="password" class="password" name="password" type="password" required="">
+                <label>Password</label>
+            </div>
+            <input class="btn" type="submit" value="Sing In">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
