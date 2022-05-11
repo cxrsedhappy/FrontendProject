@@ -1,50 +1,53 @@
-{% extends "base.html "%}
-
-{% block navbar %}
+{% extends "base.html "%} {% block navbar %}
 
 <nav class="navbar">
-    <a class="toggle-button" onclick="OpenMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </a>
+	<a class="toggle-button" onclick="OpenMenu()">
+		<span class="bar"></span>
+		<span class="bar"></span>
+		<span class="bar"></span>
+	</a>
 
-    <div class="logo">
-        <a href="/">Watatsumi</a>
-    </div>
+	<div style="flex: 1">
+		<a class="logo" href="/">Watatsumi</a>
+	</div>
 
-    <div class="dropdown">
-        {% if authorized == True %}
-        <div class="dropbtn">{{nickname}}</div>
-        <div class="dropdown-content">
-            <a href="/me">My Profile</a>
-            <a href="/logout">Sing out</a>
-            {% else %}
-            <div class="dropbtn">Guest</div>
-            <div class="dropdown-content">
-                <a href="/login">Sing in</a>
-            {% endif %}
-        </div>
-    </div>
+	<div id="dropdown" class="dropdown">
+		{% if authorized == True %}
+		<div class="dropbtn" id="dropbtn">
+			{{nickname}}
+			<div class="dropdown-content" id="dropdown-content">
+				<a href="/me">My Profile</a>
+				<a href="/logout">Sing out</a>
+			</div>
+		</div>
+
+		{% else %}
+		<div class="dropbtn" id="dropbtn">
+			Guest
+			<div class="dropdown-content" id="dropdown-content">
+				<a href="/login">Sing in</a>
+			</div>
+		</div>
+		{% endif %}
+	</div>
 </nav>
 
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
+<div class="post-feed">
+	{% for post in posts%}
 
-{% for post in posts%}
-<div class="post">
-    <div class="post-wrapper">
-        <div class="post-header">
-            <div class="post-title"><a>{{post.title}}</a></div>
-            <div class="post-author"><a>By: {{post.author.nickname}}</a></div>
-        </div>
-        <div class="post-content-wrapper">
-            <div class="post-content">
-                <a>{{post.content}}</a>
-            </div>
-        </div>
-    </div>
+	<div class="post">
+		<div class="post-wrapper">
+			<div class="post-header">
+				<div class="post-title">{{post.title}}</div>
+				<div class="post-author">By: {{post.author.nickname}}</div>
+			</div>
+			<div class="post-content-wrapper">
+				<div class="post-content">{{post.content}}</div>
+			</div>
+		</div>
+	</div>
+
+	{% endfor %}
 </div>
-{% endfor %}
-
 {% endblock %}

@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', path='/style.css')}}">
-    <title>Watatsumi</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="{{url_for('static', path='/style.css')}}" />
+		<title>Watatsumi</title>
+	</head>
+	<body>
+		<div class="layout">
+			{% block navbar %} {% endblock %}
 
-{% block navbar %}
+			<main>{% block content %} {% endblock %}</main>
 
-{% endblock %}
-
-<main>
-    {% block content %} {% endblock %}
-</main>
-
-
-<footer class="footer">
-    <div class="footer-wrapper">
-        <div class="footer-contacts">
-            <ul>
-                <li><a>Terms Of Service</a></li>
-                <li><a>Support</a></li>
-            </ul>
-        </div>
-        <nav class="social-media">
-            <div>
-                <ul>
-                    <li><a class="vk">vk</a></li>
-                    <li><a class="instagram">instagram</a></li>
-                    <li><a class="youtube">youtube</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</footer>
-
-</body>
+			<footer class="footer">
+				<div class="footer-wrapper">
+					<div class="footer-contacts">
+						<ul>
+							<li><a>Terms Of Service</a></li>
+							<li><a>Support</a></li>
+						</ul>
+					</div>
+					<nav class="social-media">
+						<div>
+							<ul>
+								<li><a class="vk">vk</a></li>
+								<li><a class="instagram">instagram</a></li>
+								<li><a class="youtube">youtube</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</footer>
+		</div>
+		<script src="{{url_for('static', path='/js/inputs.js')}}"></script>
+		<script src="{{url_for('static', path='/js/dropdown.js')}}"></script>
+	</body>
 </html>

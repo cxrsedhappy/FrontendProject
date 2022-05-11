@@ -84,7 +84,8 @@ async def createpost(title: str = Form(...), content: str = Form(...), bearer: s
     if q.status_code == 200:
         return RedirectResponse('/me', status_code=status.HTTP_303_SEE_OTHER)
 
-    response = RedirectResponse("/create", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse(
+        "/create", status_code=status.HTTP_303_SEE_OTHER)
     return response
 
 
